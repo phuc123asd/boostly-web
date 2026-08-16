@@ -4,13 +4,45 @@ export const OVERLAY_IMAGE = "https://soft-zoom-63098134.figma.site/_assets/v11/
 
 export const ZALO_PHONE = "0325116160";
 export const ZALO_LINK = "https://zalo.me/0325116160";
-export const SUPPORT_EMAIL = "support@boostly.vn";
+export const SUPPORT_EMAIL = "vphuc6899@gmail.com";
 
 export const PLATFORMS = [
-  { id: 'facebook', name: 'Facebook', color: '#1877F2' },
-  { id: 'tiktok', name: 'TikTok', color: '#FE2C55' },
-  { id: 'instagram', name: 'Instagram', color: '#E4405F' },
-  { id: 'youtube', name: 'YouTube', color: '#FF0000' }
+  { 
+    id: 'facebook', 
+    name: 'Facebook', 
+    color: '#1877F2',
+    accentClass: 'from-blue-600/30 to-blue-400/10',
+    borderActive: 'border-blue-500/60',
+    glowColor: 'rgba(24, 119, 242, 0.25)',
+    placeholder: 'https://facebook.com/username/posts/...'
+  },
+  { 
+    id: 'tiktok', 
+    name: 'TikTok', 
+    color: '#FE2C55',
+    accentClass: 'from-[#FE2C55]/30 to-[#25F4EE]/20',
+    borderActive: 'border-[#FE2C55]/60',
+    glowColor: 'rgba(254, 44, 85, 0.25)',
+    placeholder: 'https://www.tiktok.com/@username/video/...'
+  },
+  { 
+    id: 'instagram', 
+    name: 'Instagram', 
+    color: '#E4405F',
+    accentClass: 'from-[#E4405F]/30 to-[#833AB4]/20',
+    borderActive: 'border-[#E4405F]/60',
+    glowColor: 'rgba(228, 64, 95, 0.25)',
+    placeholder: 'https://www.instagram.com/p/...'
+  },
+  { 
+    id: 'youtube', 
+    name: 'YouTube', 
+    color: '#FF0000',
+    accentClass: 'from-red-600/30 to-rose-400/10',
+    borderActive: 'border-red-500/60',
+    glowColor: 'rgba(255, 0, 0, 0.25)',
+    placeholder: 'https://www.youtube.com/watch?v=... hoặc @channel'
+  }
 ];
 
 export const SERVICES = {

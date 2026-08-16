@@ -23,6 +23,27 @@
     font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     overflow-x: hidden;
   }
+
+  /* Completely remove iOS & mobile video controls and native play overlay */
+  video {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+
+  video::-webkit-media-controls,
+  video::-webkit-media-controls-enclosure,
+  video::-webkit-media-controls-panel,
+  video::-webkit-media-controls-play-button,
+  video::-webkit-media-controls-start-playback-button,
+  video::-webkit-media-controls-overlay-play-button,
+  *::-webkit-media-controls-start-playback-button {
+    display: none !important;
+    -webkit-appearance: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
 }
 
 /* Glassmorphism Styles */
@@ -91,3 +112,59 @@
 .pt-safe {
   padding-top: max(1.25rem, env(safe-area-inset-top));
 }
+
+/* Custom Range Slider */
+input[type=range].custom-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 9999px;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+input[type=range].custom-slider:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+input[type=range].custom-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #ffffff;
+  cursor: pointer;
+  box-shadow: 0 0 12px rgba(59, 130, 246, 0.8), 0 0 2px rgba(255, 255, 255, 0.9);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  border: 2px solid #3b82f6;
+}
+
+input[type=range].custom-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+  box-shadow: 0 0 16px rgba(59, 130, 246, 1), 0 0 4px rgba(255, 255, 255, 1);
+}
+
+input[type=range].custom-slider::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #ffffff;
+  cursor: pointer;
+  box-shadow: 0 0 12px rgba(59, 130, 246, 0.8);
+  border: 2px solid #3b82f6;
+  transition: transform 0.15s ease;
+}
+
+/* Shimmer Light */
+@keyframes lightShimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(200%); }
+}
+
+.animate-shimmer {
+  animation: lightShimmer 2.5s infinite;
+}
+

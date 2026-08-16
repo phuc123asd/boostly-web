@@ -1,10 +1,11 @@
 import React, { useEffect, useRef } from 'react';
 import { BG_IMAGE_1, FRONT_VIDEO, OVERLAY_IMAGE } from '../data/servicesData';
-import { Sparkles, Activity } from 'lucide-react';
+import { Zap, Activity } from 'lucide-react';
 
 export default function HeroSection({ onOpenOrder }) {
   const gridSvgRef = useRef(null);
   const videoMaskRef = useRef(null);
+  const videoElementRef = useRef(null);
 
   const mousePosRef = useRef({ 
     x: typeof window !== 'undefined' ? window.innerWidth / 2 : 600, 
@@ -19,6 +20,32 @@ export default function HeroSection({ onOpenOrder }) {
   const idleAngleRef = useRef(0);
 
   useEffect(() => {
+    // Force video muted & playsInline for iOS Safari autoplay without showing play button
+    if (videoElementRef.current) {
+      const v = videoElementRef.current;
+      v.defaultMuted = true;
+      v.muted = true;
+      v.playsInline = true;
+      v.setAttribute('playsinline', 'true');
+      v.setAttribute('webkit-playsinline', 'true');
+      v.setAttribute('x5-playsinline', 'true');
+      v.setAttribute('x5-video-player-type', 'h5');
+      v.setAttribute('x5-video-player-fullscreen', 'true');
+      
+      const playPromise = v.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {
+          const startPlayback = () => {
+            if (videoElementRef.current) {
+              videoElementRef.current.play().catch(() => {});
+            }
+          };
+          window.addEventListener('touchstart', startPlayback, { once: true, passive: true });
+          window.addEventListener('click', startPlayback, { once: true, passive: true });
+        });
+      }
+    }
+
     const canvas = document.createElement('canvas');
     const radius = 280;
     canvas.width = radius * 2;
@@ -176,12 +203,21 @@ export default function HeroSection({ onOpenOrder }) {
         className="absolute inset-0 z-30 pointer-events-none transition-opacity duration-300"
       >
         <video
+          ref={videoElementRef}
           src={FRONT_VIDEO}
           autoPlay
           loop
           muted
           playsInline
-          className="w-full h-full object-cover"
+          webkit-playsinline="true"
+          x5-playsinline="true"
+          x5-video-player-type="h5"
+          x5-video-player-fullscreen="true"
+          preload="auto"
+          controls={false}
+          disablePictureInPicture
+          disableRemotePlayback
+          className="w-full h-full object-cover pointer-events-none"
           style={{ clipPath: 'inset(35% 0 0 0)' }}
         />
       </div>
@@ -192,7 +228,7 @@ export default function HeroSection({ onOpenOrder }) {
           onClick={onOpenOrder}
           className="liquid-glass flex-1 py-3 px-4 rounded-2xl flex items-center justify-center gap-2 text-white font-bold text-xs bg-gradient-to-r from-blue-600/40 to-purple-600/40 border border-white/20 active:scale-95 shadow-2xl transition-all"
         >
-          <Sparkles className="w-4 h-4 text-emerald-400 animate-pulse-soft" />
+          <Zap className="w-4 h-4 text-emerald-400" />
           <span>Đặt Dịch Vụ Nhanh</span>
         </button>
 
