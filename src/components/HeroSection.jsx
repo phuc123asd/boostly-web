@@ -186,15 +186,6 @@ export default function HeroSection({ onOpenOrder }) {
         />
       </div>
 
-      {/* Desktop Helper Badge */}
-      <div className="absolute bottom-6 sm:bottom-8 left-4 sm:left-8 z-40 hidden sm:flex items-center gap-2.5 liquid-glass px-4 py-2 rounded-full">
-        <span className="relative flex h-2 w-2">
-          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
-          <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
-        </span>
-        <span className="text-xs text-white/80 font-medium tracking-wide">Di chuyển chuột hoặc chạm để trải nghiệm hiệu ứng</span>
-      </div>
-
       {/* Mobile Floating CTA button */}
       <div className="absolute bottom-5 left-4 right-4 z-40 sm:hidden flex items-center justify-between gap-2.5 pb-safe">
         <button
@@ -208,18 +199,6 @@ export default function HeroSection({ onOpenOrder }) {
         <div className="liquid-glass px-3.5 py-2.5 rounded-2xl flex items-center gap-2 flex-shrink-0">
           <Activity className="w-3.5 h-3.5 text-emerald-400" />
           <span className="text-[11px] font-mono font-bold text-white">4+ Apps</span>
-        </div>
-      </div>
-
-      {/* Desktop Floating Stats Widget */}
-      <div className="absolute bottom-6 sm:bottom-8 right-4 sm:right-8 z-40 hidden sm:flex items-center gap-4 sm:gap-5 liquid-glass px-4 sm:px-5 py-2.5 rounded-2xl">
-        <div className="flex flex-col border-r border-white/10 pr-4">
-          <span className="text-sm sm:text-base font-extrabold font-mono text-white">4+</span>
-          <span className="text-[9px] uppercase tracking-wider text-white/50 font-medium">Nền tảng</span>
-        </div>
-        <div className="flex flex-col">
-          <span className="text-sm sm:text-base font-extrabold font-mono text-white">12+</span>
-          <span className="text-[9px] uppercase tracking-wider text-white/50 font-medium">Dịch vụ</span>
         </div>
       </div>
     </div>
